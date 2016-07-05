@@ -1,0 +1,23 @@
+{
+	inboundData:{
+		CustomeData:{
+			xin_oppidentity:"会员身份",
+			xin_age:"性别",
+			xin_owneridName: "客户归属",
+			xin_mobilephonenumber1: "手机1",
+			phone1: "电话1",
+			xin_id: "证件号",
+			xin_address:"通讯地址",
+			xin_remark:"备注"
+		}
+		CallInfo: {
+		 CallPhone :"来电号码",
+ 		 CallTime :"来电时间",
+ 		 belonging :"归属地"
+
+
+		}
+
+	}
+
+}

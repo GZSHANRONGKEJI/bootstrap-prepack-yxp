@@ -1,0 +1,42 @@
+body{
+    margin: 0;
+    background-color: #fff;
+}
+
+.ui.selection.dropdown {
+	min-width: inherit;
+}
+.nopadding {
+	padding: 0px !important
+}
+.nopaddingleft {
+	padding-left: 0px !important
+}
+.nopaddingright {
+	padding-right: 0px !important
+}
+.noborder {
+	border: 0px !important
+}
+.nomaring {
+	margin: 0px !important
+}
+
+.input-group-sm>.form-control,.input-group-sm>.input-group-addon,.input-group-sm>.input-group-btn>.btn {
+    padding: 5px 10px !important
+
+}
+.nav-tabs > li.active > a{
+	background: #2185D0;
+    color: #FFF;
+}
+.nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+	background: #2185D0;
+    color: #FFF;
+}
+.pointer:hover{
+    cursor: pointer;
+}
+.text-truncate {
+    display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
