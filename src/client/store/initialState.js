@@ -197,6 +197,10 @@ export default {
             {
                 value: 13,
                 text: '非会员'
+            },
+            {
+                value: 15,
+                text: '丰顺路宝'
             }
         ],
         processingmode: [
@@ -297,6 +301,110 @@ export default {
             {
                 value: 905290000,
                 text: '完成'
+            }
+        ],
+        managementtype:[
+            {
+                value: 905290000,
+                text: '零售'
+            },
+            {
+                value: 905290001,
+                text: '批发'
+            },
+            {
+                value: 905290002,
+                text: '批零兼有'
+            }
+        ],
+        pricerangetype:[
+            {
+                value: 905290000,
+                text: '0-5万'
+            },
+            {
+                value: 905290001,
+                text: '0-10万'
+            },
+            {
+                value: 905290002,
+                text: '10-20万'
+            },
+            {
+                value:905290003,
+                text:'20万以上'
+            }
+        ],
+        vendorclasscategorytype:[
+            {
+                value: 1,
+                text: '个人'
+            },
+            {
+                value: 2,
+                text: '厂商'
+            },
+            {
+                value: 3,
+                text: '自有'
+            },
+            {
+                value:4,
+                text:'上级公司'
+            }
+        ],
+        customeridentitytype:[
+            {
+                value: 0,
+                text: '个人'
+            },
+            {
+                value: 1,
+                text: '4S店商家'
+            },
+            {
+                value: 2,
+                text: '专业公司'
+            },
+            {
+                value: 3,
+                text: '集团厂商'
+            },
+            {
+                value: 5,
+                text: '其他'
+            },
+            {
+                value: 6,
+                text: '租赁公司'
+            },
+            {
+                value: 7,
+                text: '汽贸集团'
+            },
+            {
+                value: 8,
+                text: '代理商'
+            },
+            {
+                value: 9,
+                text: '自有帐号A'
+            },
+            {
+                value: 10,
+                text: '超级入门级'
+            },
+            {
+                value: 11,
+                text: '自有帐号B'
+            },
+            {
+                value: 12,
+                text: '代理人'
+            },
+            {
+                value: 13,
+                text: '阿波罗账号'
             }
         ],
         questionCategory: [
@@ -761,7 +869,8 @@ export default {
         field: [
             {
                 'value': 'xin_name',
-                'text': '客户名称'
+                'text': '客户名称',
+                'className': 'col-xs-5',
             },
             {
                 'value': 'xin_memberabb',
@@ -769,7 +878,9 @@ export default {
             },
             {
                 'value': 'xin_contacts',
-                'text': '联系人'
+                'text': '联系人',
+                'end': true
+
             },
             {
                 'value': 'xin_contactstel',
@@ -803,26 +914,39 @@ export default {
                 'value': 'xin_certificate',
                 'text': '税务登记证'
             },
+            
             {
-                'value': 'xin_province',
-                'text': '所属省份',
-                'list': 'province',
+                'value': 'xin_vendorclasscategory',
+                'text': '主体类型',
+                'list': 'vendorclasscategorytype',
                 'type': 'dropdown'
             },
             {
-                'value': 'xin_city',
-                'text': '所属城市',
-                'list': 'city',
+                'value': 'xin_customeridentity',
+                'text': '会员类型',
+                'list': 'customeridentitytype',
                 'type': 'dropdown'
             },
             {
-                'value': 'xin_branchoffice',
+                'value': 'xin_businesstype',
+                'text': '业务类型',
+                'list': 'businesstype',
+                'type': 'dropdown'
+            },
+            {
+                'value': 'xin_customertype',
+                'text': '会员身份',
+                'list': 'customertype',
+                'type': 'dropdown'
+            },
+            {
+                'value': 'xin_needcity',
                 'text': '所属分公司',
                 'list': 'LargeArea',
                 'type': 'dropdown'
             },
             {
-                'value': 'xin_needcity',
+                'value': 'xin_branchoffice',
                 'text': '意向业务城市',
                 'list': 'LargeArea',
                 'type': 'dropdown'
@@ -841,26 +965,46 @@ export default {
                 'type': 'dropdown'
             },
             {
+                'value': 'xin_province',
+                'text': '所属省份',
+                'list': 'province',
+                'type': 'dropdown'
+            },
+            {
+                'value': 'xin_city',
+                'text': '所属城市',
+                'list': 'city',
+                'type': 'dropdown'
+            },
+            {
                 'value': 'xin_address',
-                'text': '地址'
+                'text': '地址',
+                'className': 'col-xs-5',
+                'end':true
+            },
+            
+            // {
+            //     'value': 'xin_sellertype',
+            //     'text': '卖家类型',
+            //     'list': 'sellertype',
+            //     'type': 'dropdown'
+            // },
+             {
+                'value': 'xin_brand',
+                'text': '经营品牌'
             },
             {
-                'value': 'xin_businesstype',
-                'text': '业务类型',
-                'list': 'businesstype',
+                'value': 'xin_managementtype',
+                'text': '经营类型',
+                'list': 'managementtype',
                 'type': 'dropdown'
             },
             {
-                'value': 'xin_customertype',
-                'text': '会员类型',
-                'list': 'customertype',
-                'type': 'dropdown'
-            },
-            {
-                'value': 'xin_sellertype',
-                'text': '卖家类型',
-                'list': 'sellertype',
-                'type': 'dropdown'
+                'value': 'xin_pricerange',
+                'text': '经营价格区间',
+                'list': 'pricerangetype',
+                'type': 'dropdown',
+                'end':true
             },
             {
                 'value': 'xin_followresult',
@@ -870,9 +1014,15 @@ export default {
             },
             {
                 'value': 'xin_remark',
-                'text': '备注',
+                'text': '清洗备注',
                 'className': 'col-xs-5',
                 'end': true
+            },
+            {
+                'value':'',
+                'text':'',
+                'type':'button',
+                'end':true
             },
             {
                 'value': 'xin_membername',
@@ -887,25 +1037,15 @@ export default {
             {
                 'value': 'xin_memberlevel',
                 'text': '会员级别',
-                'end': true,
                 'disabled': true
             },
-            {
-                'value': 'xin_salesof',
-                'text': '所属销售',
-                'disabled': true
-
-            },
+            
             {
                 'value': 'OwnerId',
                 'text': '会员所属',
                 'disabled': true
             },
-            {
-                'value': 'xin_deliverymanager',
-                'text': '客服经理',
-                'disabled': true
-            },
+            
             {
                 'value': 'xin_currentbond',
                 'text': '当前保证金',
@@ -954,7 +1094,8 @@ export default {
             {
                 'value': 'xin_integra',
                 'text': '积分',
-                'disabled': true
+                'disabled': true,
+                'end':true
             }
         ],
         item: {},

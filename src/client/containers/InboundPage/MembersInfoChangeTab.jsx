@@ -58,7 +58,7 @@ class MembersInfoChangeTab extends Component {
     }
     
     render() {
-        var {field, followresultList, item, LargeArea, customertype, businesstype, province, city, sellertype, completionstate } = this.props;
+        var {field, followresultList, item, LargeArea, customertype, businesstype, province, city, sellertype, completionstate,managementtype,pricerangetype,vendorclasscategorytype,customeridentitytype } = this.props;
         var LargeArea = this.LargeArea;
         var province = this.province;
         if(item.xin_province && city.length === 0 && this.Index === 0){
@@ -107,13 +107,17 @@ class MembersInfoChangeTab extends Component {
                                     city = { city }
                                     sellertype = { sellertype }
                                     followresultList = { followresultList }
-                                    completionstate ={ completionstate} />
+                                    completionstate ={ completionstate}
+                                    managementtype = {managementtype} 
+                                    pricerangetype = {pricerangetype} 
+                                    vendorclasscategorytype = {vendorclasscategorytype}
+                                    customeridentitytype={customeridentitytype} />
                 </div>
             );
     }
 }
 function mapStateToProps(state) {
-    const {MemberInfoTab: {field, item, LargeArea, province, city}, Option : { followresultList,customertype, businesstype, sellertype, completionstate } } = state;
+    const {MemberInfoTab: {field, item, LargeArea, province, city}, Option : { followresultList,customertype, businesstype, sellertype, completionstate,managementtype,pricerangetype,vendorclasscategorytype,customeridentitytype  } } = state;
     return {
         field,
         item,
@@ -124,7 +128,11 @@ function mapStateToProps(state) {
         province,
         city,
         sellertype,
-        completionstate
+        completionstate,
+        managementtype,
+        pricerangetype,
+        vendorclasscategorytype,
+        customeridentitytype
     };
 }
 

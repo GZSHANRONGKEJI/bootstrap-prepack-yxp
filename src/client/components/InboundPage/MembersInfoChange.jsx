@@ -41,12 +41,13 @@ class MembersInfoChange extends Component {
             handlerOnSubmit(item);
         }
     }
-    InitFroms(field, item, customertype, businesstype, LargeArea,province,city, sellertype,followresultList,completionstate) {
+    InitFroms(field, item, customertype, businesstype, LargeArea,province,city, sellertype,followresultList,completionstate,managementtype,pricerangetype,vendorclasscategorytype,customeridentitytype) {
         var FromList = [];
         var From = [];
         var  index = 1;
         for (var i = 0; i < field.length ; i++, index++) {
             var crmfield = field[i];
+
             var text = crmfield.text;
             var value = crmfield.value;
             var className =crmfield.className || 'col-xs-2';
@@ -98,8 +99,57 @@ class MembersInfoChange extends Component {
                                         <Sdropdown value={ item[value] } name= { value } list = { completionstate } onChange={ this.handleOnChange }/>
                                     </CrmInputDiv>); 
                     }
+                    else if(crmfield.list == "managementtype") {
+                        From.push(<CrmInputDiv className={ className }>
+                                        <Sdropdown value={ item[value] } name= { value } list = { managementtype } onChange={ this.handleOnChange }/>
+                                    </CrmInputDiv>); 
+                    }
+                    else if(crmfield.list == "pricerangetype") {
+                        From.push(<CrmInputDiv className={ className }>
+                                        <Sdropdown value={ item[value] } name= { value } list = { pricerangetype } onChange={ this.handleOnChange }/>
+                                    </CrmInputDiv>); 
+                    }
+                     else if(crmfield.list == "vendorclasscategorytype") {
+                        From.push(<CrmInputDiv className={ className }>
+                                        <Sdropdown value={ item[value] } name= { value } list = { vendorclasscategorytype } onChange={ this.handleOnChange }/>
+                                    </CrmInputDiv>); 
+                    }
+                    else if(crmfield.list == "customeridentitytype") {
+                        From.push(<CrmInputDiv className={ className }>
+                                        <Sdropdown value={ item[value] } name= { value } list = { customeridentitytype } onChange={ this.handleOnChange }/>
+                                    </CrmInputDiv>); 
+                    }
                 }
+                
 
+            }
+            else if (crmfield.type == "button") {
+                     var submitButton = [];
+                       if(item.state != 2 && item.xin_OppId) {
+                        submitButton.push(  <Col
+                                             xs={ 1 }
+                                             md={ 1 }
+                                             sm={ 1 }
+                                             lg={ 1 }>
+                                            <LoadingButton
+                                                    bsStyle="primary"
+                                                    onClick={ this.handleOnSave }>
+                                                <span>保存</span>
+                                            </LoadingButton>
+                                        </Col>);
+                           submitButton.push( <Col
+                                             xs={ 2 }
+                                             md={ 2 }
+                                             sm={ 2 }
+                                             lg={ 2 }>
+                                            <LoadingButton
+                                                    bsStyle="primary"
+                                                    onClick={ this.handlerOnSubmit }>
+                                                <span>提交</span>
+                                            </LoadingButton>
+                                        </Col>)
+                       }
+                       From.push(submitButton)
             }
             else {
                 if(crmfield.disabled == true) {
@@ -133,7 +183,7 @@ class MembersInfoChange extends Component {
         return FromList;
     }
     render() {
-        const { item, followresultList, field, customertype, businesstype, LargeArea, province, city, sellertype, completionstate } = this.props;
+        const { item, followresultList, field, customertype, businesstype, LargeArea, province, city, sellertype, completionstate,managementtype,pricerangetype,vendorclasscategorytype,customeridentitytype } = this.props;
         var customertype1 = [];
         if(item.xin_businesstype === "0") {
            customertype1 = _.reject(customertype, function(type){ return type.value  ==  2});
@@ -141,32 +191,21 @@ class MembersInfoChange extends Component {
         else if(item.xin_businesstype === "1"){
             customertype1 = _.reject(customertype, function(type){ return type.value  == 0});
         }
-          var Froms = this.InitFroms(field, item, customertype1, businesstype, LargeArea, province, city, sellertype, followresultList, completionstate);
-       var submitButton = [];
-       if(item.state != 2 && item.xin_OppId) {
-        submitButton.push(  <Col
-                             xs={ 1 }
-                             md={ 1 }
-                             sm={ 1 }
-                             lg={ 1 }>
-                            <LoadingButton
-                                    bsStyle="primary"
-                                    onClick={ this.handleOnSave }>
-                                <span>保存</span>
-                            </LoadingButton>
-                        </Col>);
-           submitButton.push( <Col
-                             xs={ 2 }
-                             md={ 2 }
-                             sm={ 2 }
-                             lg={ 2 }>
-                            <LoadingButton
-                                    bsStyle="primary"
-                                    onClick={ this.handlerOnSubmit }>
-                                <span>提交</span>
-                            </LoadingButton>
-                        </Col>)
-       }
+        var customeridentitytype1 = [];
+        if(item.xin_vendorclasscategory == "1") {
+            customeridentitytype1 = _.filter(customeridentitytype, function(type) {  return [0,10,12].indexOf(type.value)> -1 })
+        }
+        else if(item.xin_vendorclasscategory == "2") {
+            customeridentitytype1 = _.filter(customeridentitytype, function(type) {  return [1,2,12].indexOf(type.value)> -1 })
+        }
+        else if(item.xin_vendorclasscategory == "3") {
+            customeridentitytype1 = _.filter(customeridentitytype, function(type) {  return [9,11,12,13].indexOf(type.value)> -1 })
+        }
+        else if(item.xin_vendorclasscategory == "4") {
+            customeridentitytype1 = _.filter(customeridentitytype, function(type) {  return [3,7].indexOf(type.value)> -1 })
+        }
+          var Froms = this.InitFroms(field, item, customertype1, businesstype, LargeArea, province, city, sellertype, followresultList, completionstate,managementtype,pricerangetype,vendorclasscategorytype,customeridentitytype1);
+      
         //var Froms = [];
         return (<form
                       {...this.props}
@@ -183,7 +222,7 @@ class MembersInfoChange extends Component {
                              sm={ 3 }
                              lg={ 3 } />
                       
-                         {submitButton}
+                       
                     </Row>
                 </Grid>
             </form>

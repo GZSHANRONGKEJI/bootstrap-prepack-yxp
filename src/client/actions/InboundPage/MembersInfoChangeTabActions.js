@@ -108,6 +108,12 @@ export default handleActions({
                 });
             }
         }
+        if(action.payload.businesstype != undefined) {
+            action.payload.customertype = ""; 
+        }
+        if(action.payload.xin_vendorclasscategory != undefined) {
+            action.payload.xin_customeridentity = ""; 
+        }
         state.item = Object.assign({}, state.item, action.payload);
         state = Object.assign({}, state);
         return state;
