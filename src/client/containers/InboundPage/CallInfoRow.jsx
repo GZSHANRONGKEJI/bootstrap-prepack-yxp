@@ -41,6 +41,7 @@ class CallInfoRow extends Component {
             obj.lastphonecallid = common.getTemp().lastphonecallid;
             obj.directioncode =  true;
             obj.fromtype = 3;
+            //obj.iscompleted = 1;
             obj = Object.assign(obj , tape);
             request.post('AccMgr/OpportunityService.svc/CreateWorkOrder',{ request : obj }).then(response => {
                 const { returnValue, message } = response.d || response;
